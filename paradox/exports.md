@@ -4,12 +4,12 @@
 
 Kind: `function`
 Module: `src/features/authorization-infrastructure/composition/createInfraAdapter.ts`
-Source: `src/features/authorization-infrastructure/composition/createInfraAdapter.ts:13:1`
+Source: `src/features/authorization-infrastructure/composition/createInfraAdapter.ts:21:1`
 
-Create the canonical Cerbos authorization adapter entrypoint.
+Create the canonical runtime-neutral Cerbos authorization adapter.
 
-The foundation exposes the released Contracts boundary and fails lifecycle calls explicitly
-until the provider implementation phase supplies its external adapters.
+Cerbos contributes one portable workload plus policy files. The selected runtime owns their
+concrete materialization; this provider contains no Kubernetes or Compose branches.
 
 ### Signatures
 

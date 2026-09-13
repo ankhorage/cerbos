@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.0.0",
+      "value": "v0.1.0",
       "color": "cb3837"
     },
     {
@@ -71,7 +71,13 @@
     {
       "path": "examples/basic-usage/index.ts",
       "isEntrypoint": false,
-      "dependencies": ["dist/index.d.ts"],
+      "dependencies": [],
+      "exports": []
+    },
+    {
+      "path": "src/cerbosLifecycle.test.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/index.ts"],
       "exports": []
     },
     {
@@ -81,9 +87,31 @@
       "exports": ["infraAdapterDescriptor"]
     },
     {
+      "path": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "destroyCerbos",
+        "getCerbosStatus",
+        "planCerbos",
+        "reconcileCerbos",
+        "validateCerbos"
+      ]
+    },
+    {
+      "path": "src/features/authorization-infrastructure/application/createCerbosWorkload.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["createCerbosWorkload"]
+    },
+    {
       "path": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts",
       "isEntrypoint": false,
-      "dependencies": ["src/constants/infra.ts"],
+      "dependencies": [
+        "src/constants/infra.ts",
+        "src/features/authorization-infrastructure/application/cerbosLifecycle.ts",
+        "src/features/authorization-infrastructure/application/createCerbosWorkload.ts"
+      ],
       "exports": ["createInfraAdapter"]
     },
     {
@@ -102,14 +130,14 @@
   "exports": [
     {
       "name": "createInfraAdapter",
-      "description": "Create the canonical Cerbos authorization adapter entrypoint.\n\nThe foundation exposes the released Contracts boundary and fails lifecycle calls explicitly\nuntil the provider implementation phase supplies its external adapters.",
+      "description": "Create the canonical runtime-neutral Cerbos authorization adapter.\n\nCerbos contributes one portable workload plus policy files. The selected runtime owns their\nconcrete materialization; this provider contains no Kubernetes or Compose branches.",
       "isReadme": true,
       "examples": [],
       "kind": "function",
       "modulePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts",
       "sourceLocation": {
         "filePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts",
-        "line": 13,
+        "line": 21,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -147,20 +175,137 @@
   "components": [],
   "sourceFunctions": [
     {
-      "name": "createInfraAdapter",
-      "description": "Create the canonical Cerbos authorization adapter entrypoint.\n\nThe foundation exposes the released Contracts boundary and fails lifecycle calls explicitly\nuntil the provider implementation phase supplies its external adapters.",
+      "name": "createContext",
+      "description": null,
       "sourceLocation": {
-        "filePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts",
+        "filePath": "src/cerbosLifecycle.test.ts",
+        "line": 104,
+        "column": 1
+      }
+    },
+    {
+      "name": "createDestroyRequest",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/cerbosLifecycle.test.ts",
+        "line": 127,
+        "column": 1
+      }
+    },
+    {
+      "name": "validateCerbos",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts",
         "line": 13,
         "column": 1
       }
     },
     {
-      "name": "notImplementedAsync",
-      "description": "Reject lifecycle execution until this package's provider phase is implemented.",
+      "name": "planCerbos",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts",
+        "line": 20,
+        "column": 1
+      }
+    },
+    {
+      "name": "reconcileCerbos",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts",
+        "line": 43,
+        "column": 1
+      }
+    },
+    {
+      "name": "getCerbosStatus",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts",
+        "line": 55,
+        "column": 1
+      }
+    },
+    {
+      "name": "destroyCerbos",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts",
+        "line": 71,
+        "column": 1
+      }
+    },
+    {
+      "name": "createCerbosOwner",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts",
+        "line": 79,
+        "column": 1
+      }
+    },
+    {
+      "name": "createCerbosOutput",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts",
+        "line": 101,
+        "column": 1
+      }
+    },
+    {
+      "name": "hasPreviousOwner",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts",
+        "line": 111,
+        "column": 1
+      }
+    },
+    {
+      "name": "isConfirmed",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts",
+        "line": 123,
+        "column": 1
+      }
+    },
+    {
+      "name": "invalidSelection",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts",
+        "line": 132,
+        "column": 1
+      }
+    },
+    {
+      "name": "unconfirmedDestroy",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts",
+        "line": 145,
+        "column": 1
+      }
+    },
+    {
+      "name": "createCerbosWorkload",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/authorization-infrastructure/application/createCerbosWorkload.ts",
+        "line": 13,
+        "column": 1
+      }
+    },
+    {
+      "name": "createInfraAdapter",
+      "description": "Create the canonical runtime-neutral Cerbos authorization adapter.\n\nCerbos contributes one portable workload plus policy files. The selected runtime owns their\nconcrete materialization; this provider contains no Kubernetes or Compose branches.",
       "sourceLocation": {
         "filePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts",
-        "line": 26,
+        "line": 21,
         "column": 1
       }
     }
@@ -171,12 +316,17 @@
       "name": "createInfraAdapter",
       "sourcePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts",
       "symbolName": "createInfraAdapter",
-      "description": "Create the canonical Cerbos authorization adapter entrypoint.\n\nThe foundation exposes the released Contracts boundary and fails lifecycle calls explicitly\nuntil the provider implementation phase supplies its external adapters.",
+      "description": "Create the canonical runtime-neutral Cerbos authorization adapter.\n\nCerbos contributes one portable workload plus policy files. The selected runtime owns their\nconcrete materialization; this provider contains no Kubernetes or Compose branches.",
       "isReadme": true
     }
   ],
   "graphs": {
     "imports": [
+      {
+        "fromPath": "src/cerbosLifecycle.test.ts",
+        "toPath": "src/index.ts",
+        "sourcePath": "src/cerbosLifecycle.test.ts"
+      },
       {
         "fromPath": "src/index.ts",
         "toPath": "src/constants/infra.ts",
@@ -193,17 +343,52 @@
         "sourcePath": "src/infraAdapter.test.ts"
       },
       {
-        "fromPath": "examples/basic-usage/index.ts",
-        "toPath": "dist/index.d.ts",
-        "sourcePath": "examples/basic-usage/index.ts"
+        "fromPath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts",
+        "toPath": "src/constants/infra.ts",
+        "sourcePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts"
       },
       {
         "fromPath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts",
-        "toPath": "src/constants/infra.ts",
+        "toPath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts",
+        "sourcePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts"
+      },
+      {
+        "fromPath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts",
+        "toPath": "src/features/authorization-infrastructure/application/createCerbosWorkload.ts",
         "sourcePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts"
       }
     ],
     "calls": [
+      {
+        "fromSymbol": "src/cerbosLifecycle.test.ts",
+        "toSymbol": "it",
+        "callExpression": "it",
+        "sourcePath": "src/cerbosLifecycle.test.ts"
+      },
+      {
+        "fromSymbol": "src/cerbosLifecycle.test.ts",
+        "toSymbol": "createInfraAdapter",
+        "callExpression": "createInfraAdapter",
+        "sourcePath": "src/cerbosLifecycle.test.ts"
+      },
+      {
+        "fromSymbol": "src/cerbosLifecycle.test.ts",
+        "toSymbol": "createContext",
+        "callExpression": "createContext",
+        "sourcePath": "src/cerbosLifecycle.test.ts"
+      },
+      {
+        "fromSymbol": "src/cerbosLifecycle.test.ts",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/cerbosLifecycle.test.ts"
+      },
+      {
+        "fromSymbol": "src/cerbosLifecycle.test.ts",
+        "toSymbol": "createDestroyRequest",
+        "callExpression": "createDestroyRequest",
+        "sourcePath": "src/cerbosLifecycle.test.ts"
+      },
       {
         "fromSymbol": "src/infraAdapter.test.ts",
         "toSymbol": "describe",
@@ -241,39 +426,117 @@
         "sourcePath": "examples/basic-usage/index.ts"
       },
       {
+        "fromSymbol": "validateCerbos",
+        "toSymbol": "invalidSelection",
+        "callExpression": "invalidSelection",
+        "sourcePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts"
+      },
+      {
+        "fromSymbol": "planCerbos",
+        "toSymbol": "validateCerbos",
+        "callExpression": "validateCerbos",
+        "sourcePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts"
+      },
+      {
+        "fromSymbol": "planCerbos",
+        "toSymbol": "createCerbosOwner",
+        "callExpression": "createCerbosOwner",
+        "sourcePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts"
+      },
+      {
+        "fromSymbol": "planCerbos",
+        "toSymbol": "hasPreviousOwner",
+        "callExpression": "hasPreviousOwner",
+        "sourcePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts"
+      },
+      {
+        "fromSymbol": "reconcileCerbos",
+        "toSymbol": "validateCerbos",
+        "callExpression": "validateCerbos",
+        "sourcePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts"
+      },
+      {
+        "fromSymbol": "reconcileCerbos",
+        "toSymbol": "createCerbosOwner",
+        "callExpression": "createCerbosOwner",
+        "sourcePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts"
+      },
+      {
+        "fromSymbol": "reconcileCerbos",
+        "toSymbol": "createCerbosOutput",
+        "callExpression": "createCerbosOutput",
+        "sourcePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts"
+      },
+      {
+        "fromSymbol": "getCerbosStatus",
+        "toSymbol": "validateCerbos",
+        "callExpression": "validateCerbos",
+        "sourcePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts"
+      },
+      {
+        "fromSymbol": "getCerbosStatus",
+        "toSymbol": "createCerbosOwner",
+        "callExpression": "createCerbosOwner",
+        "sourcePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts"
+      },
+      {
+        "fromSymbol": "getCerbosStatus",
+        "toSymbol": "hasPreviousOwner",
+        "callExpression": "hasPreviousOwner",
+        "sourcePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts"
+      },
+      {
+        "fromSymbol": "destroyCerbos",
+        "toSymbol": "isConfirmed",
+        "callExpression": "isConfirmed",
+        "sourcePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts"
+      },
+      {
+        "fromSymbol": "destroyCerbos",
+        "toSymbol": "unconfirmedDestroy",
+        "callExpression": "unconfirmedDestroy",
+        "sourcePath": "src/features/authorization-infrastructure/application/cerbosLifecycle.ts"
+      },
+      {
         "fromSymbol": "validateAsync",
-        "toSymbol": "notImplementedAsync",
-        "callExpression": "notImplementedAsync",
+        "toSymbol": "validateCerbos",
+        "callExpression": "validateCerbos",
         "sourcePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts"
       },
       {
         "fromSymbol": "planAsync",
-        "toSymbol": "notImplementedAsync",
-        "callExpression": "notImplementedAsync",
+        "toSymbol": "planCerbos",
+        "callExpression": "planCerbos",
         "sourcePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts"
       },
       {
         "fromSymbol": "desiredWorkloadsAsync",
-        "toSymbol": "notImplementedAsync",
-        "callExpression": "notImplementedAsync",
+        "toSymbol": "validateCerbos",
+        "callExpression": "validateCerbos",
+        "sourcePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts"
+      },
+      {
+        "fromSymbol": "desiredWorkloadsAsync",
+        "toSymbol": "createCerbosWorkload",
+        "callExpression": "createCerbosWorkload",
         "sourcePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts"
       },
       {
         "fromSymbol": "reconcileAsync",
-        "toSymbol": "notImplementedAsync",
-        "callExpression": "notImplementedAsync",
+        "toSymbol": "reconcileCerbos",
+        "callExpression": "reconcileCerbos",
         "sourcePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts"
       },
       {
         "fromSymbol": "statusAsync",
-        "toSymbol": "notImplementedAsync",
-        "callExpression": "notImplementedAsync",
+        "toSymbol": "getCerbosStatus",
+        "callExpression": "getCerbosStatus",
         "sourcePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts"
       },
       {
         "fromSymbol": "destroyAsync",
-        "toSymbol": "notImplementedAsync",
-        "callExpression": "notImplementedAsync",
+        "toSymbol": "destroyCerbos",
+        "callExpression": "destroyCerbos",
         "sourcePath": "src/features/authorization-infrastructure/composition/createInfraAdapter.ts"
       }
     ],
