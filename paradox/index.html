@@ -196,13 +196,39 @@
               </button>
             </li>
             <li>
+              <button class="nav-button" type="button" data-target="src/cerbosLifecycle.test.ts">
+                src/cerbosLifecycle.test.ts
+                <small>2 functions</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/features/authorization-infrastructure/application/cerbosLifecycle.ts"
+              >
+                src/features/authorization-infrastructure/application/cerbosLifecycle.ts
+                <small>11 functions</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/features/authorization-infrastructure/application/createCerbosWorkload.ts"
+              >
+                src/features/authorization-infrastructure/application/createCerbosWorkload.ts
+                <small>1 function</small>
+              </button>
+            </li>
+            <li>
               <button
                 class="nav-button"
                 type="button"
                 data-target="src/features/authorization-infrastructure/composition/createInfraAdapter.ts"
               >
                 src/features/authorization-infrastructure/composition/createInfraAdapter.ts
-                <small>2 functions</small>
+                <small>1 function</small>
               </button>
             </li>
           </ul>
@@ -215,7 +241,7 @@
             <div class="summary">
               <div><strong>2</strong><span class="muted">public exports</span></div>
               <div><strong>0</strong><span class="muted">components</span></div>
-              <div><strong>5</strong><span class="muted">modules</span></div>
+              <div><strong>8</strong><span class="muted">modules</span></div>
               <div><strong>1</strong><span class="muted">entrypoints</span></div>
             </div>
             <h3>Entrypoints</h3>
@@ -226,10 +252,16 @@
 
           <section class="panel">
             <h2>Modules</h2>
-            <article class="item" data-search="examples/basic-usage/index.ts dist/index.d.ts">
+            <article class="item" data-search="examples/basic-usage/index.ts">
               <h3>examples/basic-usage/index.ts</h3>
               <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <code>dist/index.d.ts</code></p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+              <p><strong>Exports:</strong> <span class="empty">None</span></p>
+            </article>
+            <article class="item" data-search="src/cerbosLifecycle.test.ts src/index.ts">
+              <h3>src/cerbosLifecycle.test.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <code>src/index.ts</code></p>
               <p><strong>Exports:</strong> <span class="empty">None</span></p>
             </article>
             <article class="item" data-search="src/constants/infra.ts infraAdapterDescriptor">
@@ -240,11 +272,39 @@
             </article>
             <article
               class="item"
-              data-search="src/features/authorization-infrastructure/composition/createInfraAdapter.ts src/constants/infra.ts createInfraAdapter"
+              data-search="src/features/authorization-infrastructure/application/cerbosLifecycle.ts destroyCerbos getCerbosStatus planCerbos reconcileCerbos validateCerbos"
+            >
+              <h3>src/features/authorization-infrastructure/application/cerbosLifecycle.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+              <p>
+                <strong>Exports:</strong> <code>destroyCerbos</code>, <code>getCerbosStatus</code>,
+                <code>planCerbos</code>, <code>reconcileCerbos</code>, <code>validateCerbos</code>
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="src/features/authorization-infrastructure/application/createCerbosWorkload.ts createCerbosWorkload"
+            >
+              <h3>src/features/authorization-infrastructure/application/createCerbosWorkload.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+              <p><strong>Exports:</strong> <code>createCerbosWorkload</code></p>
+            </article>
+            <article
+              class="item"
+              data-search="src/features/authorization-infrastructure/composition/createInfraAdapter.ts src/constants/infra.ts src/features/authorization-infrastructure/application/cerbosLifecycle.ts src/features/authorization-infrastructure/application/createCerbosWorkload.ts createInfraAdapter"
             >
               <h3>src/features/authorization-infrastructure/composition/createInfraAdapter.ts</h3>
               <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <code>src/constants/infra.ts</code></p>
+              <p>
+                <strong>Dependencies:</strong> <code>src/constants/infra.ts</code>,
+                <code>src/features/authorization-infrastructure/application/cerbosLifecycle.ts</code
+                >,
+                <code
+                  >src/features/authorization-infrastructure/application/createCerbosWorkload.ts</code
+                >
+              </p>
               <p><strong>Exports:</strong> <code>createInfraAdapter</code></p>
             </article>
             <article
@@ -288,19 +348,20 @@
               <article
                 class="item"
                 id="symbol-createinfraadapter"
-                data-search="createInfraAdapter function src/features/authorization-infrastructure/composition/createInfraAdapter.ts Create the canonical Cerbos authorization adapter entrypoint.&#10;&#10;The foundation exposes the released Contracts boundary and fails lifecycle calls explicitly&#10;until the provider implementation phase supplies its external adapters. () =&gt; InfraServiceAdapter"
+                data-search="createInfraAdapter function src/features/authorization-infrastructure/composition/createInfraAdapter.ts Create the canonical runtime-neutral Cerbos authorization adapter.&#10;&#10;Cerbos contributes one portable workload plus policy files. The selected runtime owns their&#10;concrete materialization; this provider contains no Kubernetes or Compose branches. () =&gt; InfraServiceAdapter"
               >
                 <h4>createInfraAdapter</h4>
                 <p class="muted">
                   function •
                   <code
-                    >src/features/authorization-infrastructure/composition/createInfraAdapter.ts:13:1</code
+                    >src/features/authorization-infrastructure/composition/createInfraAdapter.ts:21:1</code
                   >
                 </p>
                 <p>
-                  Create the canonical Cerbos authorization adapter entrypoint. The foundation
-                  exposes the released Contracts boundary and fails lifecycle calls explicitly until
-                  the provider implementation phase supplies its external adapters.
+                  Create the canonical runtime-neutral Cerbos authorization adapter. Cerbos
+                  contributes one portable workload plus policy files. The selected runtime owns
+                  their concrete materialization; this provider contains no Kubernetes or Compose
+                  branches.
                 </p>
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -331,14 +392,29 @@
                 entrypoint_src_index_ts
                 module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
                 package__ankhorage_cerbos -.-&gt; module_examples_basic_usage_index_ts
-                module_examples_basic_usage_index_ts --&gt; module_dist_index_d_ts
+                module_src_cerbosLifecycle_test_ts[&quot;src/cerbosLifecycle.test.ts&quot;]
+                package__ankhorage_cerbos -.-&gt; module_src_cerbosLifecycle_test_ts
+                module_src_cerbosLifecycle_test_ts --&gt; module_src_index_ts
                 module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
                 package__ankhorage_cerbos -.-&gt; module_src_constants_infra_ts
+                module_src_features_authorization_infrastructure_application_cerbosLifecycle_ts[&quot;src/features/authorization-infrastructure/application/cerbosLifecycle.ts&quot;]
+                package__ankhorage_cerbos -.-&gt;
+                module_src_features_authorization_infrastructure_application_cerbosLifecycle_ts
+                module_src_features_authorization_infrastructure_application_createCerbosWorkload_ts[&quot;src/features/authorization-infrastructure/application/createCerbosWorkload.ts&quot;]
+                package__ankhorage_cerbos -.-&gt;
+                module_src_features_authorization_infrastructure_application_createCerbosWorkload_ts
                 module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts[&quot;src/features/authorization-infrastructure/composition/createInfraAdapter.ts&quot;]
                 package__ankhorage_cerbos -.-&gt;
                 module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts
                 module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts
-                --&gt; module_src_constants_infra_ts module_src_index_ts[&quot;src/index.ts&quot;]
+                --&gt; module_src_constants_infra_ts
+                module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts
+                --&gt;
+                module_src_features_authorization_infrastructure_application_cerbosLifecycle_ts
+                module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts
+                --&gt;
+                module_src_features_authorization_infrastructure_application_createCerbosWorkload_ts
+                module_src_index_ts[&quot;src/index.ts&quot;]
                 module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
                 package__ankhorage_cerbos -.-&gt; module_src_infraAdapter_test_ts
                 module_src_infraAdapter_test_ts --&gt; module_src_index_ts
@@ -352,12 +428,20 @@ graph TD
   package__ankhorage_cerbos --&gt; entrypoint_src_index_ts
   module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
   package__ankhorage_cerbos -.-&gt; module_examples_basic_usage_index_ts
-  module_examples_basic_usage_index_ts --&gt; module_dist_index_d_ts
+  module_src_cerbosLifecycle_test_ts[&quot;src/cerbosLifecycle.test.ts&quot;]
+  package__ankhorage_cerbos -.-&gt; module_src_cerbosLifecycle_test_ts
+  module_src_cerbosLifecycle_test_ts --&gt; module_src_index_ts
   module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
   package__ankhorage_cerbos -.-&gt; module_src_constants_infra_ts
+  module_src_features_authorization_infrastructure_application_cerbosLifecycle_ts[&quot;src/features/authorization-infrastructure/application/cerbosLifecycle.ts&quot;]
+  package__ankhorage_cerbos -.-&gt; module_src_features_authorization_infrastructure_application_cerbosLifecycle_ts
+  module_src_features_authorization_infrastructure_application_createCerbosWorkload_ts[&quot;src/features/authorization-infrastructure/application/createCerbosWorkload.ts&quot;]
+  package__ankhorage_cerbos -.-&gt; module_src_features_authorization_infrastructure_application_createCerbosWorkload_ts
   module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts[&quot;src/features/authorization-infrastructure/composition/createInfraAdapter.ts&quot;]
   package__ankhorage_cerbos -.-&gt; module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts
   module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_constants_infra_ts
+  module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_features_authorization_infrastructure_application_cerbosLifecycle_ts
+  module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_features_authorization_infrastructure_application_createCerbosWorkload_ts
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
   package__ankhorage_cerbos -.-&gt; module_src_infraAdapter_test_ts
@@ -374,26 +458,40 @@ graph TD
               <div class="mermaid">
                 graph LR
                 module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
+                module_src_cerbosLifecycle_test_ts[&quot;src/cerbosLifecycle.test.ts&quot;]
                 module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
+                module_src_features_authorization_infrastructure_application_cerbosLifecycle_ts[&quot;src/features/authorization-infrastructure/application/cerbosLifecycle.ts&quot;]
+                module_src_features_authorization_infrastructure_application_createCerbosWorkload_ts[&quot;src/features/authorization-infrastructure/application/createCerbosWorkload.ts&quot;]
                 module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts[&quot;src/features/authorization-infrastructure/composition/createInfraAdapter.ts&quot;]
                 module_src_index_ts[&quot;src/index.ts&quot;]
                 module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
-                module_examples_basic_usage_index_ts --&gt; module_dist_index_d_ts
+                module_src_cerbosLifecycle_test_ts --&gt; module_src_index_ts
                 module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts
-                --&gt; module_src_constants_infra_ts module_src_infraAdapter_test_ts --&gt;
-                module_src_index_ts
+                --&gt; module_src_constants_infra_ts
+                module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts
+                --&gt;
+                module_src_features_authorization_infrastructure_application_cerbosLifecycle_ts
+                module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts
+                --&gt;
+                module_src_features_authorization_infrastructure_application_createCerbosWorkload_ts
+                module_src_infraAdapter_test_ts --&gt; module_src_index_ts
               </div>
               <details>
                 <summary>View Mermaid source</summary>
                 <pre>
 graph LR
   module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
+  module_src_cerbosLifecycle_test_ts[&quot;src/cerbosLifecycle.test.ts&quot;]
   module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
+  module_src_features_authorization_infrastructure_application_cerbosLifecycle_ts[&quot;src/features/authorization-infrastructure/application/cerbosLifecycle.ts&quot;]
+  module_src_features_authorization_infrastructure_application_createCerbosWorkload_ts[&quot;src/features/authorization-infrastructure/application/createCerbosWorkload.ts&quot;]
   module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts[&quot;src/features/authorization-infrastructure/composition/createInfraAdapter.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
-  module_examples_basic_usage_index_ts --&gt; module_dist_index_d_ts
+  module_src_cerbosLifecycle_test_ts --&gt; module_src_index_ts
   module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_constants_infra_ts
+  module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_features_authorization_infrastructure_application_cerbosLifecycle_ts
+  module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_features_authorization_infrastructure_application_createCerbosWorkload_ts
   module_src_infraAdapter_test_ts --&gt; module_src_index_ts
 </pre>
               </details>
@@ -404,7 +502,10 @@ graph LR
               <div class="mermaid">
                 graph LR
                 module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
+                module_src_cerbosLifecycle_test_ts[&quot;src/cerbosLifecycle.test.ts&quot;]
                 module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
+                module_src_features_authorization_infrastructure_application_cerbosLifecycle_ts[&quot;src/features/authorization-infrastructure/application/cerbosLifecycle.ts&quot;]
+                module_src_features_authorization_infrastructure_application_createCerbosWorkload_ts[&quot;src/features/authorization-infrastructure/application/createCerbosWorkload.ts&quot;]
                 module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts[&quot;src/features/authorization-infrastructure/composition/createInfraAdapter.ts&quot;]
                 module_src_index_ts[&quot;src/index.ts&quot;]
                 module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
@@ -419,7 +520,10 @@ graph LR
                 <pre>
 graph LR
   module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
+  module_src_cerbosLifecycle_test_ts[&quot;src/cerbosLifecycle.test.ts&quot;]
   module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
+  module_src_features_authorization_infrastructure_application_cerbosLifecycle_ts[&quot;src/features/authorization-infrastructure/application/cerbosLifecycle.ts&quot;]
+  module_src_features_authorization_infrastructure_application_createCerbosWorkload_ts[&quot;src/features/authorization-infrastructure/application/createCerbosWorkload.ts&quot;]
   module_src_features_authorization_infrastructure_composition_createInfraAdapter_ts[&quot;src/features/authorization-infrastructure/composition/createInfraAdapter.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
@@ -433,6 +537,190 @@ graph LR
           </section>
         </section>
         <section
+          id="view-src-cerboslifecycle-test-ts"
+          class="view"
+          data-view="src/cerbosLifecycle.test.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/cerbosLifecycle.test.ts</h2>
+            <article class="item" data-search="createContext src/cerbosLifecycle.test.ts ">
+              <h3>createContext</h3>
+              <p class="muted"><code>src/cerbosLifecycle.test.ts:107:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="createDestroyRequest src/cerbosLifecycle.test.ts ">
+              <h3>createDestroyRequest</h3>
+              <p class="muted"><code>src/cerbosLifecycle.test.ts:130:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-features-authorization-infrastructure-application-cerboslifecycle-ts"
+          class="view"
+          data-view="src/features/authorization-infrastructure/application/cerbosLifecycle.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/features/authorization-infrastructure/application/cerbosLifecycle.ts</h2>
+            <article
+              class="item"
+              data-search="validateCerbos src/features/authorization-infrastructure/application/cerbosLifecycle.ts "
+            >
+              <h3>validateCerbos</h3>
+              <p class="muted">
+                <code
+                  >src/features/authorization-infrastructure/application/cerbosLifecycle.ts:13:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="planCerbos src/features/authorization-infrastructure/application/cerbosLifecycle.ts "
+            >
+              <h3>planCerbos</h3>
+              <p class="muted">
+                <code
+                  >src/features/authorization-infrastructure/application/cerbosLifecycle.ts:20:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="reconcileCerbos src/features/authorization-infrastructure/application/cerbosLifecycle.ts "
+            >
+              <h3>reconcileCerbos</h3>
+              <p class="muted">
+                <code
+                  >src/features/authorization-infrastructure/application/cerbosLifecycle.ts:43:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="getCerbosStatus src/features/authorization-infrastructure/application/cerbosLifecycle.ts "
+            >
+              <h3>getCerbosStatus</h3>
+              <p class="muted">
+                <code
+                  >src/features/authorization-infrastructure/application/cerbosLifecycle.ts:55:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="destroyCerbos src/features/authorization-infrastructure/application/cerbosLifecycle.ts "
+            >
+              <h3>destroyCerbos</h3>
+              <p class="muted">
+                <code
+                  >src/features/authorization-infrastructure/application/cerbosLifecycle.ts:71:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="createCerbosOwner src/features/authorization-infrastructure/application/cerbosLifecycle.ts "
+            >
+              <h3>createCerbosOwner</h3>
+              <p class="muted">
+                <code
+                  >src/features/authorization-infrastructure/application/cerbosLifecycle.ts:79:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="createCerbosOutput src/features/authorization-infrastructure/application/cerbosLifecycle.ts "
+            >
+              <h3>createCerbosOutput</h3>
+              <p class="muted">
+                <code
+                  >src/features/authorization-infrastructure/application/cerbosLifecycle.ts:101:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="hasPreviousOwner src/features/authorization-infrastructure/application/cerbosLifecycle.ts "
+            >
+              <h3>hasPreviousOwner</h3>
+              <p class="muted">
+                <code
+                  >src/features/authorization-infrastructure/application/cerbosLifecycle.ts:111:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="isConfirmed src/features/authorization-infrastructure/application/cerbosLifecycle.ts "
+            >
+              <h3>isConfirmed</h3>
+              <p class="muted">
+                <code
+                  >src/features/authorization-infrastructure/application/cerbosLifecycle.ts:123:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="invalidSelection src/features/authorization-infrastructure/application/cerbosLifecycle.ts "
+            >
+              <h3>invalidSelection</h3>
+              <p class="muted">
+                <code
+                  >src/features/authorization-infrastructure/application/cerbosLifecycle.ts:132:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="unconfirmedDestroy src/features/authorization-infrastructure/application/cerbosLifecycle.ts "
+            >
+              <h3>unconfirmedDestroy</h3>
+              <p class="muted">
+                <code
+                  >src/features/authorization-infrastructure/application/cerbosLifecycle.ts:145:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-features-authorization-infrastructure-application-createcerbosworkload-ts"
+          class="view"
+          data-view="src/features/authorization-infrastructure/application/createCerbosWorkload.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/features/authorization-infrastructure/application/createCerbosWorkload.ts</h2>
+            <article
+              class="item"
+              data-search="createCerbosWorkload src/features/authorization-infrastructure/application/createCerbosWorkload.ts "
+            >
+              <h3>createCerbosWorkload</h3>
+              <p class="muted">
+                <code
+                  >src/features/authorization-infrastructure/application/createCerbosWorkload.ts:13:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
           id="view-src-features-authorization-infrastructure-composition-createinfraadapter-ts"
           class="view"
           data-view="src/features/authorization-infrastructure/composition/createInfraAdapter.ts"
@@ -442,32 +730,18 @@ graph LR
             <h2>src/features/authorization-infrastructure/composition/createInfraAdapter.ts</h2>
             <article
               class="item"
-              data-search="createInfraAdapter src/features/authorization-infrastructure/composition/createInfraAdapter.ts Create the canonical Cerbos authorization adapter entrypoint.&#10;&#10;The foundation exposes the released Contracts boundary and fails lifecycle calls explicitly&#10;until the provider implementation phase supplies its external adapters."
+              data-search="createInfraAdapter src/features/authorization-infrastructure/composition/createInfraAdapter.ts Create the canonical runtime-neutral Cerbos authorization adapter.&#10;&#10;Cerbos contributes one portable workload plus policy files. The selected runtime owns their&#10;concrete materialization; this provider contains no Kubernetes or Compose branches."
             >
               <h3>createInfraAdapter</h3>
               <p class="muted">
                 <code
-                  >src/features/authorization-infrastructure/composition/createInfraAdapter.ts:13:1</code
+                  >src/features/authorization-infrastructure/composition/createInfraAdapter.ts:21:1</code
                 >
               </p>
               <p>
-                Create the canonical Cerbos authorization adapter entrypoint. The foundation exposes
-                the released Contracts boundary and fails lifecycle calls explicitly until the
-                provider implementation phase supplies its external adapters.
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="notImplementedAsync src/features/authorization-infrastructure/composition/createInfraAdapter.ts Reject lifecycle execution until this package&#39;s provider phase is implemented."
-            >
-              <h3>notImplementedAsync</h3>
-              <p class="muted">
-                <code
-                  >src/features/authorization-infrastructure/composition/createInfraAdapter.ts:26:1</code
-                >
-              </p>
-              <p>
-                Reject lifecycle execution until this package&#39;s provider phase is implemented.
+                Create the canonical runtime-neutral Cerbos authorization adapter. Cerbos
+                contributes one portable workload plus policy files. The selected runtime owns their
+                concrete materialization; this provider contains no Kubernetes or Compose branches.
               </p>
             </article>
           </section>

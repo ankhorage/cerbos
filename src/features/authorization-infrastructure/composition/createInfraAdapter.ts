@@ -1,38 +1,38 @@
-import type { InfraResult, InfraServiceAdapter } from '@ankhorage/contracts/infra';
+import type { InfraServiceAdapter } from '@ankhorage/contracts/infra';
 
 import { infraAdapterDescriptor } from '../../../constants/infra';
+import {
+  destroyCerbos,
+  getCerbosStatus,
+  planCerbos,
+  reconcileCerbos,
+  validateCerbos,
+} from '../application/cerbosLifecycle';
+import { createCerbosWorkload } from '../application/createCerbosWorkload';
 
 /***
- * Create the canonical Cerbos authorization adapter entrypoint.
+ * Create the canonical runtime-neutral Cerbos authorization adapter.
  *
- * The foundation exposes the released Contracts boundary and fails lifecycle calls explicitly
- * until the provider implementation phase supplies its external adapters.
+ * Cerbos contributes one portable workload plus policy files. The selected runtime owns their
+ * concrete materialization; this provider contains no Kubernetes or Compose branches.
  *
  * @readme
  */
 export function createInfraAdapter(): InfraServiceAdapter {
   return {
     descriptor: infraAdapterDescriptor,
-    validateAsync: () => notImplementedAsync(),
-    planAsync: () => notImplementedAsync(),
-    desiredWorkloadsAsync: () => notImplementedAsync(),
-    reconcileAsync: () => notImplementedAsync(),
-    statusAsync: () => notImplementedAsync(),
-    destroyAsync: () => notImplementedAsync(),
+    validateAsync: (context) => Promise.resolve(validateCerbos(context)),
+    planAsync: (context) => Promise.resolve(planCerbos(context)),
+    desiredWorkloadsAsync: (context) => {
+      const validation = validateCerbos(context);
+      return Promise.resolve(
+        validation.ok
+          ? { ok: true, value: [createCerbosWorkload(context)], diagnostics: [] }
+          : validation,
+      );
+    },
+    reconcileAsync: (context) => Promise.resolve(reconcileCerbos(context)),
+    statusAsync: (context) => Promise.resolve(getCerbosStatus(context)),
+    destroyAsync: (context, request) => Promise.resolve(destroyCerbos(context, request)),
   };
-}
-
-/*** Reject lifecycle execution until this package's provider phase is implemented. */
-function notImplementedAsync<T>(): Promise<InfraResult<T>> {
-  return Promise.resolve({
-    ok: false,
-    diagnostics: [
-      {
-        severity: 'error',
-        code: 'cerbos_adapter_not_implemented',
-        message:
-          'The Cerbos authorization adapter foundation is installed, but its lifecycle is not implemented yet.',
-      },
-    ],
-  });
 }
