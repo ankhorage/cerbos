@@ -179,7 +179,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/cerbosLifecycle.test.ts",
-        "line": 104,
+        "line": 107,
         "column": 1
       }
     },
@@ -188,7 +188,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/cerbosLifecycle.test.ts",
-        "line": 127,
+        "line": 130,
         "column": 1
       }
     },

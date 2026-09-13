@@ -30,7 +30,10 @@ export function createCerbosWorkload(context: InfraExecutionContext): InfraWorkl
           content: { kind: 'literal' as const, value: content },
         })),
     ],
-    health: { kind: 'http', port: 3592, path: '/_cerbos/health' },
+    health: {
+      kind: 'command',
+      command: ['/cerbos', 'healthcheck', '--config=/config/config.yaml'],
+    },
     exposure: 'internal',
     replicas: 1,
   };
