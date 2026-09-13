@@ -1,5 +1,11 @@
 # @ankhorage/cerbos
 
+## 0.2.0
+
+### Minor Changes
+
+- 2b5e82f: Implement the runtime-neutral Cerbos authorization lifecycle and portable policy workload.
+
 ## 0.1.0
 
 ### Minor Changes
